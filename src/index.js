@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import * as Sentry from '@sentry/react';
+import {BrowserTracing} from "@sentry/tracing";
 
+Sentry.init({
+    dsn:"https://8691e22d19f042399bbda46561a95da1@o1361381.ingest.sentry.io/6649972",
+    integrations: [new BrowserTracing()],
+    tracesSampleRate:1.0
+})
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
